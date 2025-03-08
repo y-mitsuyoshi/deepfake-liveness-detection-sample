@@ -1,7 +1,7 @@
 import { DefaultAzureCredential } from "@azure/identity";
 import FaceClient, { isUnexpected } from "@azure-rest/ai-vision-face";
 import { randomUUID } from "node:crypto";
-import { Plugin } from '@nuxt/types';
+import { defineNuxtPlugin } from 'nuxt/app';
 
 const endpoint = process.env["FACE_ENDPOINT"] || "<endpoint>";
 const credential = new DefaultAzureCredential();
@@ -41,11 +41,9 @@ const getLivenessSession = async (sessionId: string) => {
   return getLivenessSessionResponse.body;
 };
 
-const azureFaceLivenessPlugin: Plugin = (context, inject) => {
-  inject('azureFaceLiveness', {
+export default defineNuxtPlugin((nuxtApp) => {
+  nuxtApp.provide('azureFaceLiveness', {
     createLivenessSession,
     getLivenessSession,
-  });
-};
-
-export default azureFaceLivenessPlugin;
+  })
+})
