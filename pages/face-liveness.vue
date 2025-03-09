@@ -1,11 +1,29 @@
 <template>
-  <div>
-    <h1>Face Liveness Detection</h1>
-    <input type="file" accept="image/*" @change="onFileChange">
-    <button @click="detectLiveness" :disabled="!selectedFile">Detect Liveness</button>
-    <div v-if="result">
-      <h2>Detection Result:</h2>
-      <p>{{ result }}</p>
+  <div class="max-w-2xl mx-auto">
+    <h1 class="text-3xl font-bold text-gray-900 mb-8">Face Liveness Detection</h1>
+    
+    <div class="bg-white shadow-md rounded-lg p-6">
+      <div class="mb-6">
+        <label class="block mb-2 font-medium text-gray-700">Upload Image</label>
+        <input 
+          type="file" 
+          accept="image/*" 
+          @change="onFileChange"
+          class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none"
+        >
+      </div>
+      <button 
+        @click="detectLiveness" 
+        :disabled="!selectedFile"
+        class="w-full bg-blue-500 text-white font-bold py-2 px-4 rounded disabled:opacity-50"
+      >
+        Detect Liveness
+      </button>
+    </div>
+
+    <div v-if="result" class="mt-8 bg-white shadow-md rounded-lg p-6">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Detection Result:</h2>
+      <p class="text-gray-700">{{ result }}</p>
     </div>
   </div>
 </template>

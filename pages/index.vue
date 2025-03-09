@@ -1,7 +1,12 @@
 <template>
-  <div>
-    <h1>Welcome to Deepfake Liveness Detection</h1>
-    <NuxtLink to="/face-liveness">Go to Face Liveness Detection</NuxtLink>
+  <div class="text-center">
+    <h1 class="text-4xl font-bold text-gray-900 mb-8">Welcome to Deepfake Liveness Detection</h1>
+    <NuxtLink 
+      to="/face-liveness" 
+      class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300"
+    >
+      Start Face Liveness Detection
+    </NuxtLink>
   </div>
 </template>
 
