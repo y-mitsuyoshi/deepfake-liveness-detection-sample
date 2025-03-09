@@ -1,3 +1,4 @@
+/*
 import { isUnexpected } from "@azure-rest/ai-vision-face";
 import { randomUUID } from "node:crypto";
 import { readFileSync } from "node:fs";
@@ -85,3 +86,4 @@ export default defineNuxtPlugin((nuxtApp) => {
     createLivenessWithVerifySession,
   })
 })
+*/
