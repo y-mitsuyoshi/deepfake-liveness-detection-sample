@@ -1,6 +1,6 @@
 <template>
   <div class="max-w-2xl mx-auto">
-    <h1 class="text-3xl font-bold text-gray-900 mb-8">Face Liveness Detection</h1>
+    <h1 class="text-3xl font-bold text-gray-900 mb-8">Face Liveness Detection with Verify</h1>
     
     <div class="bg-white shadow-md rounded-lg p-6">
       <div class="mb-6">
@@ -9,7 +9,7 @@
           :disabled="isProcessing"
           class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-4 rounded transition-colors disabled:opacity-50"
         >
-          {{ isProcessing ? 'Processing...' : 'Start Liveness Detection' }}
+          {{ isProcessing ? 'Processing...' : 'Start Liveness Detection with Verify' }}
         </button>
       </div>
 
@@ -17,10 +17,6 @@
         <div class="w-full bg-gray-200 rounded-full h-2.5">
           <div class="bg-blue-600 h-2.5 rounded-full" :style="{ width: `${progress}%` }"></div>
         </div>
-      </div>
-
-      <div v-if="sessionId" class="mt-4 p-4 bg-gray-50 rounded-lg">
-        <p class="text-gray-700">Session ID: {{ sessionId }}</p>
       </div>
 
       <div v-if="livenessResult" class="mt-6">
@@ -41,7 +37,6 @@
 import { ref } from 'vue'
 
 const $azureFaceLiveness = useNuxtApp().$azureFaceLiveness
-const sessionId = ref(null)
 const livenessResult = ref(null)
 const error = ref(null)
 const isProcessing = ref(false)
@@ -55,7 +50,7 @@ async function startLivenessDetection() {
     livenessResult.value = null
 
     // セッション作成
-    await $azureFaceLiveness.createLivenessSession()
+    await $azureFaceLiveness.createLivenessWithVerifySession()
     progress.value = 50
 
     // 結果取得（数秒待機）
