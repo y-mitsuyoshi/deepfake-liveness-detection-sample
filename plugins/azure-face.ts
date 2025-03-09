@@ -7,3 +7,6 @@ const apikey = process.env["FACE_APIKEY"] || "<apikey>";
 const credential = new AzureKeyCredential(apikey);
 export const client = FaceClient(endpoint, credential);
 
+export default defineNuxtPlugin((nuxtApp) => {
+  nuxtApp.provide('azureFace', client)
+})
